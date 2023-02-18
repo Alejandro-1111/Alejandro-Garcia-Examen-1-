@@ -43,7 +43,7 @@ function generateId() {
   });
 
   // Endpoint to show one specific student by name
-app.get('/students/:id', (req, res) => {
+app.get('/get/:id', (req, res) => {
   const student = students.find(s => s.id === parseInt(req.params.id));
   if (student) {
     res.json(student);
