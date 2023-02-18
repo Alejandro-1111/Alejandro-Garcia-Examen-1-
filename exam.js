@@ -43,12 +43,14 @@ function generateId() {
   });
 
   // Endpoint to show one specific student by name
-app.get('/get', (req, res) => {
-    const student = students.find(s => s.name === parseInt(req.params.name));
-    if (student) {
-      res.json(student);
-    }
-  });
+app.get('/students/:id', (req, res) => {
+  const student = students.find(s => s.id === parseInt(req.params.id));
+  if (student) {
+    res.json(student);
+  } else {
+    res.status(404).send('Student not found');
+  }
+});
 
   // Endpoint to login with email and password and use it with a new insert for the hash
 app.post('/login', async (req, res) => {
